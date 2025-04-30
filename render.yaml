@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: council-chamber
+    env: python
+    buildCommand: ""
+    startCommand: "python Enabling\ Solas\ –\ Council\ Chamber\ Phase.py"
+    plan: free
