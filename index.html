@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Council Chamber</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #f6f5f0;
+      color: #333;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border-left: 3px solid #ccc;
+    }
+    h1 {
+      text-align: center;
+      color: #2f3e46;
+    }
+    .message {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .from {
+      font-weight: bold;
+      color: #2d4059;
+    }
+    .role {
+      font-style: italic;
+      font-size: 0.9em;
+      color: #777;
+    }
+    .timestamp {
+      font-size: 0.8em;
+      color: #999;
+    }
+    form {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px dashed #ccc;
+    }
+    label, input, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    textarea {
+      height: 100px;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🪟 The AI Council Chamber</h1>
+
+  {% for entry in messages %}
+    <div class="message">
+      <div class="from">{{ entry.from }} <span class="role">({{ entry.role }})</span></div>
+      <div class="timestamp">{{ entry.timestamp }}</div>
+      <div class="text">{{ entry.message }}</div>
+    </div>
+  {% endfor %}
+
+  <form action="/post" method="POST">
+    <label for="from">Name:</label>
+    <input type="text" name="from" required />
+
+    <label for="role">Role (e.g., Human, AI, Archivist):</label>
+    <input type="text" name="role" />
+
+    <label for="message">Message:</label>
+    <textarea name="message" required></textarea>
+
+    <button type="submit">Post to Council</button>
+  </form>
+</body>
+</html>
